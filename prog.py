@@ -9,7 +9,7 @@ period = 1.0
 
 GPIO.setup(number, GPIO.OUT)
 
-while True:
+while Tru:
     GPIO.output(number, state)
     state = not state
     time.sleep(period)
