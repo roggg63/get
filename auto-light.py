@@ -1,19 +1,19 @@
 import RPi.GPIO as GPIO
+import time
 GPIO.setmode(GPIO.BCM)
 
 led = 26
-state = 1
-signal = 6
 
 GPIO.setup(led, GPIO.OUT)
-GPIO.setup(signal, GPIO.IN)
+
+pwm = GPIO.PWM(led, 200)
+duty = 0.0
+pwm.start(duty)
 
 while True:
-    if GPIO.input(signal):
-        state = not state
-        GPIO.output(led, state)
+    pwm.ChangeDutyCycle(duty)
+    time.sleep(0.05)
 
-        GPIO.output(led, 0)
-    else:
-        GPIO.output(led, 1)
-
+    duty += 1.0
+    if duty > 100.0:
+        duty = 0.0
