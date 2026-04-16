@@ -1,4 +1,3 @@
-import time
 import RPi.GPIO as GPIO
 
 class R2R_DAC:

@@ -1,4 +1,3 @@
-import time
 import RPi.GPIO as GPIO
 
 dynamic_range = 3.3
