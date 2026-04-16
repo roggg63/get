@@ -18,7 +18,7 @@ class R2R_DAC:
 
         bits = bin(number)[2:].zfill(8)
         for i, bit in enumerate(bits):
-            GPIO.output(self.gpio_bits, int(bit))
+            GPIO.output(self.gpio_bits[i], int(bit))
 
     def set_voltage(self, voltage):
         if not (0.0 <= voltage <= self.dynamic_range):
@@ -27,11 +27,10 @@ class R2R_DAC:
                 print("Устанавливаем 0.0 В")
                 voltage = 0.0
 
-        number = int(voltage / dynamic_range * 255)
+        number = int(voltage / self.dynamic_range * 255)
 
         self.set_number(number)
 
-dynamic_range = 3.3
 
 if __name__ == "__main__":
     try:
