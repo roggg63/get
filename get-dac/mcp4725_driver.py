@@ -28,15 +28,11 @@ class MCP4725:
             print(f"Число: {number}, отправленные по I2C данные: [0x{(self.address << 1):02X}, 0x{first_byte:02X}, 0x{second_byte:02X}]\n")
 
     def set_voltage(self, voltage):
-        if not (0.0 <= voltage <= self.dynamic_range):
-            if self.verbose:
-                print(f"напряжение выходит за динамический диапазон ЦАП (0.00 - {self.dynamic_range:.2f} B)")
-                print("Устанавливаем 0.0 В")
-                voltage = 0.0
-
-        number = int(voltage / self.dynamic_range * 255)
-
+        number = int(voltage / self.dynamic_range * 4095)
         self.set_number(number)
+
+
+
 
 if __name__ == "__main__":
     try:
