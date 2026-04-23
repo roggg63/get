@@ -1,26 +1,10 @@
-class PWM_DAC:
-    def __init__(self, gpio_pin, pwm_frequency, dynamic_range, verbose = False):
-        ...
-        
-    def deinit(self):
-        ...
-
-    def set_voltage(self, voltage):
-        ...
-
-
-
-if __name__ == "__main__":
-    try:
-        dac = PWM_DAC(12, 500, 3.290, True)
-        
-        while True:
-            try:
-                voltage = float(input("Введите напряжение в Вольтах: "))
-                dac.set_voltage(voltage)
-
-            except ValueError:
-                print("Вы ввели не число. Попробуйте ещё раз\n")
-
-    finally:
-        dac.deinit()
+b01-506@raspberrypi:~/Desktop/get $  cd /home/b01-506/Desktop/get ; /usr/bin/env /bin/python3 /opt/vscode/extensions/ms-python.python-2021.10.1365161279/pythonFiles/lib/python/debugpy/launcher 34465 -- /home/b01-506/Desktop/get/get-dac/mcp4725_driver.py 
+Введите напряжение в Вольтах: 3
+Traceback (most recent call last):
+  File "/home/b01-506/Desktop/get/get-dac/mcp4725_driver.py", line 40, in <module>
+    dac.set_voltage(voltage)
+  File "/home/b01-506/Desktop/get/get-dac/mcp4725_driver.py", line 32, in set_voltage
+    self.set_number(number)
+  File "/home/b01-506/Desktop/get/get-dac/mcp4725_driver.py", line 25, in set_number
+    self.bus.write_byte_data(0x61, first_byte, second_byte)
+TimeoutError: [Errno 110] Connection timed out
