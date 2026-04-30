@@ -1,8 +1,9 @@
 import time
 from r2r_adc import R2R_ADC
-from adc_plot import plot_voltage_vs_time
+from adc_plot import plot_voltage_vs_time, plot_sampling_period_hist
 
 def main():
+    
     DYNAMIC_RANGE = 3.30
     DURATION = 3.0
     COMPARE_TIME = 0.0001
@@ -24,8 +25,13 @@ def main():
             voltage_values.append(v)
             time_values.append(t)
 
-        print("Измерения завершены. Построение графика...")
+        print("Измерения завершены.")
+        
+        print("Строим график напряжения...")
         plot_voltage_vs_time(time_values, voltage_values, DYNAMIC_RANGE)
+
+        print("Строим гистограмму длительности измерений...")
+        plot_sampling_period_hist(time_values)
 
     except KeyboardInterrupt:
         print("\nПрерывание пользователем")
