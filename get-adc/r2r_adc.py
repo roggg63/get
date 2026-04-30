@@ -3,7 +3,7 @@ import time
 
 class R2R_ADC:
     
-    def __init__(self, dynamic_range, compare_time=0.01, verbose=False):
+    def __init__(self, dynamic_range, compare_time=0.1, verbose=False):
     
         self.dynamic_range = dynamic_range
         self.verbose = verbose
@@ -78,17 +78,17 @@ class R2R_ADC:
 
 
 if __name__ == "__main__":
-    DYNAMIC_RANGE = 3.30
+    DYNAMIC_RANGE = 3.295
 
     try:
-        adc = R2R_ADC(dynamic_range=DYNAMIC_RANGE, compare_time=0.01, verbose=False)
+        adc = R2R_ADC(dynamic_range=DYNAMIC_RANGE, compare_time=0.5, verbose=False)
         print("Начинаем измерение напряжения методом последовательного приближения (SAR).")
         print("Для выхода нажмите Ctrl+C\n")
 
         while True:
             voltage = adc.get_sar_voltage()
             print(f"Напряжение (SAR): {voltage:.3f} В")
-            time.sleep(0.2)
+            time.sleep(0.005)
 
     except KeyboardInterrupt:
         print("\nПрерывание пользователем")
