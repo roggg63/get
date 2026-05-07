@@ -1,15 +1,5 @@
-y/launcher 35339 -- /home/b01-506/Desktop/get/get-adc/r2r-sc.py 
-Traceback (most recent call last):
-  File "/home/b01-506/Desktop/get/get-adc/r2r-sc.py", line 16, in <module>
-    plt.plot_voltage_vs_time(time_values, voltage_values, 3.3)
-  File "/home/b01-506/Desktop/get/get-adc/adc_plot.py", line 4, in plot_voltage_vs_time
-    plt.figure(figsize=(10.6))
-  File "/usr/local/lib/python3.7/dist-packages/matplotlib/pyplot.py", line 800, in figure
-    FigureClass=FigureClass, **kwargs)
-  File "/usr/local/lib/python3.7/dist-packages/matplotlib/pyplot.py", line 316, in new_figure_manager
-    return _backend_mod.new_figure_manager(*args, **kwargs)
-  File "/usr/local/lib/python3.7/dist-packages/matplotlib/backend_bases.py", line 3544, in new_figure_manager
-    fig = fig_cls(*args, **kwargs)
-  File "/usr/local/lib/python3.7/dist-packages/matplotlib/figure.py", line 2254, in __init__
-    self.bbox_inches = Bbox.from_bounds(0, 0, *figsize)
-TypeError: from_bounds() argument after * must be an iterable, not float
+File "/home/b01-506/Desktop/get/get-adc/r2r-sar.py", line 42, in <module>
+    main()
+  File "/home/b01-506/Desktop/get/get-adc/r2r-sar.py", line 16, in main
+    verbose=False)
+TypeError: __init__() got an unexpected keyword argument 'compare_time'
