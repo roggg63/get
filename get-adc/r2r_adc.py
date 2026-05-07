@@ -39,7 +39,7 @@ class R2R_ADC:
         left  = 0
         value = 0
         while ((right - left) > 1):
-            value = (right + left) / 2
+            value = (right + left) // 2
             R2R_ADC.number_to_dac(self, value)
             time.sleep(self.compare_time)
             if (GPIO.input(self.comp_gpio) == 1):
@@ -49,7 +49,7 @@ class R2R_ADC:
         return value
 
     def get_sar_voltage(self):
-        value = self.successive_approximation_adc(self)
+        value = self.successive_approximation_adc()
         return (value/255) * self.dynamic_range
 
 
@@ -69,7 +69,7 @@ if __name__ == "__main__":
     try:
         adc = R2R_ADC(3.3, 0.01)
         while True:
-            voltage = adc.get_sar_voltage(adc)
+            voltage = adc.get_sar_voltage()
             print (f"Напряжение: {voltage}")
 
     finally:
