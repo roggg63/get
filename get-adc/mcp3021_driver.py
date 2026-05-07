@@ -20,12 +20,14 @@ class MCP3021:
         return number
 
     def get_voltage(self):
-        value = MCP3021.get_number()
-        return (value/1024) * self.dynamic_range
+        value = self.get_number()
+        return (value/1023.0) * self.dynamic_range
 
-    if __name__ == "__main__":
-        try:
-            adc = MCP3021(5.2) # измерить!
-            while True:
-                voltage = adc.get_voltage()
-                print(f"Число: {voltage}")
+if __name__ == "__main__":
+    try:
+        adc = MCP3021(5.0) # измерить!
+        while True:
+            voltage = adc.get_voltage()
+            print(f"Число: {voltage}")
+    finally:
+        adc.deinit()
