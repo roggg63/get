@@ -5,14 +5,14 @@ from adc_plot import plot_voltage_vs_time, plot_sampling_period_hist
 def main():
     DYNAMIC_RANGE = 3.30
     DURATION = 3.0
-    COMPARE_TIME = 0.001
+    COMPARE_RANGE = 0.001
 
     voltage_values = []
     time_values = []
 
     try:
         adc = R2R_ADC(dynamic_range=DYNAMIC_RANGE,
-                      compare_time=COMPARE_TIME,
+                      compare_range=COMPARE_RANGE,
                       verbose=False)
 
         start_time = time.time()
@@ -36,7 +36,7 @@ def main():
 
     finally:
         if 'adc' in locals():
-            adc.cleanup()
+            adc.deinit()
 
 if __name__ == "__main__":
     main()

@@ -56,18 +56,18 @@ class R2R_ADC:
 
 
 
-# if __name__ == "__main__":
-    # try:
-        # adc = R2R_ADC(3.3, 0.01)
-        # while True:
-            # voltage = adc.get_sc_voltage()
-            # print(f"Напряжение: {voltage}")
-    # finally:
-        # adc.deinit()
+#if __name__ == "__main__":
+#    try:
+#        adc = R2R_ADC(3.295, 0.01)
+#        while True:
+#            voltage = adc.get_sc_voltage()
+#            print(f"Напряжение: {voltage}")
+#    finally:
+#        adc.deinit()
 
 if __name__ == "__main__":
     try:
-        adc = R2R_ADC(3.3, 0.01)
+        adc = R2R_ADC(3.295, 0.01)
         while True:
             voltage = adc.get_sar_voltage()
             print (f"Напряжение: {voltage}")

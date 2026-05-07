@@ -25,7 +25,7 @@ class MCP3021:
 
 if __name__ == "__main__":
     try:
-        adc = MCP3021(5.0) # измерить!
+        adc = MCP3021(5.2) # измерить!
         while True:
             voltage = adc.get_voltage()
             print(f"Число: {voltage}")
