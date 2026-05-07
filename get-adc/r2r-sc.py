@@ -1,44 +1,22 @@
+import r2r_adc as r2r
 import time
-from r2r_adc import R2R_ADC
-from adc_plot import plot_voltage_vs_time, plot_sampling_period_hist
-
-def main():
-    
-    DYNAMIC_RANGE = 3.30
-    DURATION = 3.0
-    COMPARE_TIME = 0.0001
-
-    voltage_values = []
-    time_values = []
-
-    try:
-        adc = R2R_ADC(dynamic_range=DYNAMIC_RANGE,
-                      compare_time=COMPARE_TIME,
-                      verbose=False)
-
-        start_time = time.time()
-        print(f"Измеряем напряжение в течение {DURATION} секунд...")
-
-        while time.time() - start_time < DURATION:
-            v = adc.get_sc_voltage()
-            t = time.time() - start_time
-            voltage_values.append(v)
-            time_values.append(t)
-
-        print("Измерения завершены.")
-        
-        print("Строим график напряжения...")
-        plot_voltage_vs_time(time_values, voltage_values, DYNAMIC_RANGE)
-
-        print("Строим гистограмму длительности измерений...")
-        plot_sampling_period_hist(time_values)
-
-    except KeyboardInterrupt:
-        print("\nПрерывание пользователем")
-
-    finally:
-        if 'adc' in locals():
-            adc.cleanup()
+import adc_plot as plt
 
 if __name__ == "__main__":
-    main()
+        try:
+            adc = r2r.R2R_ADC(3.3, 0.0001)
+            voltage_values = []
+            time_values = []
+            duration = 3.0
+            start_time = time.time()
+            while ((time.time() - start_time) < duration):
+                voltage = adc.get_sc_voltage()
+                time_values.append(time.time() - start_time)
+                voltage_values.append(voltage)
+            plt.plot_voltage_vs_time(time_values, voltage_values, 3.3)
+            plt.plot_sampling_period_hist(time_values)
+
+        finally:
+            adc.deinit()
+
+
